@@ -8,7 +8,7 @@ This package provides tools for sensitivity analysis in difference-in-difference
 designs, allowing researchers to relax the parallel trends assumption.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 from .core import (
     # Utility functions

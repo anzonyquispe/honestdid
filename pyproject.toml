@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "honestdid"
-version = "0.1.0"
+version = "0.1.1"
 description = "Robust Inference in Difference-in-Differences and Event Study Designs"
 readme = "README.md"
 license = {text = "MIT"}
