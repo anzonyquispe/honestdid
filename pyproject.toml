@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "honestdid"
+version = "0.1.0"
+description = "Robust Inference in Difference-in-Differences and Event Study Designs"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.8"
+authors = [
+    {name = "Anzony Quispe", email = "anzony.quispe@example.com"},
+]
+keywords = [
+    "econometrics",
+    "difference-in-differences",
+    "event-study",
+    "causal-inference",
+    "parallel-trends",
+    "sensitivity-analysis",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Mathematics",
+]
+dependencies = [
+    "torch>=1.9.0",
+    "numpy>=1.19.0",
+    "scipy>=1.6.0",
+    "cvxpy>=1.1.0",
+    "pandas>=1.2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+    "pytest-cov>=2.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/anzonyquispe/honestdid"
+Documentation = "https://github.com/anzonyquispe/honestdid#readme"
+Repository = "https://github.com/anzonyquispe/honestdid"
+Issues = "https://github.com/anzonyquispe/honestdid/issues"
+
+[tool.setuptools]
+packages = ["honestdid"]
+
+[tool.setuptools.package-data]
+honestdid = ["py.typed"]
