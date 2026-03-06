@@ -1,10 +1,10 @@
 # ============================================================
 # Benchmark: HonestDiD::createSensitivityResults (Delta_SD)
-# Mvec = seq(0, 0.1, by = 0.01) -> 11 valores
-# Datos: Medicaid expansion (README oficial HonestDiD)
+# Mvec = seq(0, 0.1, by = 0.01) -> 11 values
+# Data: Medicaid expansion (official HonestDiD README)
 # ============================================================
 
-# --- 1. Instalar paquetes si no están -----------------------
+# --- 1. Install packages if not available --------------------
 if (!requireNamespace("remotes",  quietly = TRUE)) install.packages("remotes")
 if (!requireNamespace("HonestDiD",quietly = TRUE))
   remotes::install_github("asheshrambachan/HonestDiD")
@@ -17,8 +17,8 @@ library(fixest)
 library(haven)
 library(dplyr)
 
-# --- 2. Cargar datos y estimar TWFE -------------------------
-cat("Cargando datos...\n")
+# --- 2. Load data and estimate TWFE -------------------------
+cat("Loading data...\n")
 df <- read_dta("https://raw.githubusercontent.com/Mixtape-Sessions/Advanced-DID/main/Exercises/Data/ehec_data.dta")
 
 df_ns <- df %>%
@@ -31,12 +31,12 @@ twfe <- fixest::feols(dins ~ i(year, D, ref = 2013) | stfips + year,
 betahat <- summary(twfe)$coefficients
 sigma   <- summary(twfe)$cov.scaled
 
-cat("Estimación TWFE completada.\n")
-cat(sprintf("numPrePeriods = 5 | numPostPeriods = 2 | Mvec: seq(0, 0.1, by=0.01) -> %d valores\n\n",
+cat("TWFE estimation completed.\n")
+cat(sprintf("numPrePeriods = 5 | numPostPeriods = 2 | Mvec: seq(0, 0.1, by=0.01) -> %d values\n\n",
             length(seq(0, 0.1, by = 0.01))))
 
 # --- 3. Benchmark -------------------------------------------
-cat("Corriendo createSensitivityResults (Delta_SD)...\n")
+cat("Running createSensitivityResults (Delta_SD)...\n")
 
 t_start <- proc.time()
 
@@ -51,8 +51,8 @@ delta_sd_results <- HonestDiD::createSensitivityResults(
 t_end <- proc.time()
 elapsed <- (t_end - t_start)[["elapsed"]]
 
-# --- 4. Resultados ------------------------------------------
-cat("\n--- Resultados Delta_SD ---\n")
+# --- 4. Results ----------------------------------------------
+cat("\n--- Delta_SD Results ---\n")
 print(delta_sd_results)
 
-cat(sprintf("\n⏱  Tiempo de ejecución (R): %.4f segundos\n", elapsed))
+cat(sprintf("\n  Execution time (R): %.4f seconds\n", elapsed))
